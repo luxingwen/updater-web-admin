@@ -14,9 +14,8 @@ const TaskManagementPage = () => {
     try {
       console.log("params:", params);
       const response = await getAllTasks({}, params);
-      return {
-        data: response.data.data,
-      };
+       return response.data;
+      
     } catch (error) {
       console.error('Error fetching tasks:', error);
     } finally {
@@ -56,11 +55,6 @@ const TaskManagementPage = () => {
       key: 'taskStatus',
     },
     {
-      title: 'Content',
-      dataIndex: 'content',
-      key: 'content',
-    },
-    {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',
@@ -92,7 +86,7 @@ const TaskManagementPage = () => {
       valueType: 'option',
       render: (_, record) => [
         <Button type="primary" onClick={() => showModal(record)} key="edit">
-          Update
+          详情
         </Button>,
       ],
     },
@@ -124,7 +118,9 @@ const TaskManagementPage = () => {
         }}
         options={true}
         pagination={{
-          pageSize: 10,
+          showQuickJumper: true, // 是否可以快速跳转到某一页
+          showSizeChanger: true, // 是否显示改变每页显示数量的下拉框
+          pageSizeOptions: ['10', '20', '30', '50'], // 指定每页可以显示多少条   
         }}
         dateFormatter="string"
         style={{ whiteSpace: 'nowrap' }}

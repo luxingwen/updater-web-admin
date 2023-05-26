@@ -91,3 +91,16 @@ export async function updateTaskExecutionRecord(body: API.TaskExecutionRecord, o
     ...(options || {}),
   });
 }
+
+
+
+export async function createProgramActionTask(body: API.ReqTaskProgramAction, options?: { [key: string]: any }) {
+  return request<API.Task>('/api/v1/program/action/execute', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}

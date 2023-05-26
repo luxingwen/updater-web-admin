@@ -53,6 +53,12 @@ export default [
     hideInMenu: true,
   },
   {
+    path: '/program/action/run/:programUuid/:programActionUuid', // Specify the route path with the `uuid` parameter
+    name:'createActionTask',
+    component: './Program/Detail/ActionTask',
+    hideInMenu: true,
+  },
+  {
     path:'/task',
     name:'task',
     component:'./Task'

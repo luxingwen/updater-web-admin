@@ -11,18 +11,18 @@ declare namespace API {
         installPath: string;
         createdAt: string;
         updatedAt: string;
-      };
-      
-      type Version = {
+    };
+
+    type Version = {
         uuid: string;
         programUuid: string;
         version: string;
         releaseNote: string;
         createdAt: string;
         updatedAt: string;
-      };
-      
-      type Package = {
+    };
+
+    type Package = {
         uuid: string;
         versionUuid: string;
         os: string;
@@ -32,8 +32,8 @@ declare namespace API {
         md5: string;
         createdAt: string;
         updatedAt: string;
-      };
-      
+    };
+
 
 
     type ProgramAction = {
@@ -46,22 +46,22 @@ declare namespace API {
         description: string;
         createdAt: string;
         updatedAt: string;
-      };
+    };
 
-      type ActionType =
-      | "Download"
-      | "Install"
-      | "Start"
-      | "Stop"
-      | "Uninstall"
-      | "Backup"
-      | "Status"
-      | "Version"
-      | "Single"
-      | "Composite";
+    type ActionType =
+        | "Download"
+        | "Install"
+        | "Start"
+        | "Stop"
+        | "Uninstall"
+        | "Backup"
+        | "Status"
+        | "Version"
+        | "Single"
+        | "Composite";
 
 
-      type Client  = {
+    type Client = {
         uuid: string;
         vmuuid: string;
         sn: string;
@@ -73,10 +73,10 @@ declare namespace API {
         arch: string;
         created: string;
         updated: string;
-      }
+    }
 
 
-      type Task = {
+    type Task = {
         taskId: string;
         taskName: string;
         taskType: string;
@@ -87,9 +87,9 @@ declare namespace API {
         teamId: string;
         created: string;
         updated: string;
-      };
+    };
 
-      type TaskExecutionRecord = {
+    type TaskExecutionRecord = {
         recordId: string;
         taskId: string;
         clientUuid: string;
@@ -106,8 +106,37 @@ declare namespace API {
         timeout: string;
         parentRecordId: string;
         nextRecordId: string;
-      };
-      
-      
+    };
+
+
+    interface ProgramActionTask {
+        programUuid: string;
+        programActionUuid: string;
+    }
+
+    interface ReqTask {
+        name: string;
+        creater: string;
+        teamID: string;
+        description: string;
+        hostInfo: HostInfo;
+        batchTask: BatchTask;
+    }
+
+    interface ReqTaskProgramAction extends ReqTask {
+        content: ProgramActionTask;
+    }
+
+    interface HostInfo {
+        all: boolean;
+        clients: string[];
+    }
+
+    interface BatchTask {
+        count: number;
+        style: string;
+        number: number;
+    }
+
 
 }
