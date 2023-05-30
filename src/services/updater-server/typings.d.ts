@@ -138,4 +138,20 @@ declare namespace API {
     style: string;
     number: number;
   }
+
+  type User = {
+    uuid: string;
+    username: string;
+    password: string;
+    email: string;
+    phone: string;
+    role: string;
+    teamId: string;
+    avatar: string;
+  };
+
+  type UserLoginParams = {
+    username?: string;
+    password?: string;
+  };
 }
