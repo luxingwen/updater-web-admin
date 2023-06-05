@@ -23,3 +23,11 @@ export async function currentUser(options?: { [key: string]: any }) {
     ...(options || {}),
   });
 }
+
+/** 退出登录接口 POST /api/login/outLogin */
+export async function outLogin(options?: { [key: string]: any }) {
+  return request<Record<string, any>>('/api/v1/user/outLogin', {
+    method: 'POST',
+    ...(options || {}),
+  });
+}

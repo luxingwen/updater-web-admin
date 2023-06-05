@@ -157,7 +157,7 @@ const AddProgramActionPage = () => {
           }}
           name="windowsContent"
           label="Windows Content"
-          rules={[{ required: true, message: 'Please enter the Content' }]}
+          rules={[{ required: false, message: 'Please enter the Content' }]}
         >
           <Input.TextArea />
         </Form.Item>
@@ -174,7 +174,7 @@ const AddProgramActionPage = () => {
           }}
           name="linuxContent"
           label="Linux Content"
-          rules={[{ required: true, message: 'Please enter the Content' }]}
+          rules={[{ required: false, message: 'Please enter the Content' }]}
         >
           <Input.TextArea />
         </Form.Item>
