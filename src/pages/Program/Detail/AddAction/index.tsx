@@ -151,7 +151,11 @@ const AddProgramActionPage = () => {
               values.actionType === 'Install' ||
               values.actionType === 'Start' ||
               values.actionType === 'Stop' ||
-              values.actionType === 'Uninstall'
+              values.actionType === 'Uninstall' ||
+              values.actionType === 'Backup' ||
+              values.actionType === 'Status' ||
+              values.actionType === 'Version' ||
+              values.actionType === 'Single'
                 ? 'block'
                 : 'none',
           }}
@@ -168,7 +172,11 @@ const AddProgramActionPage = () => {
               values.actionType === 'Install' ||
               values.actionType === 'Start' ||
               values.actionType === 'Stop' ||
-              values.actionType === 'Uninstall'
+              values.actionType === 'Uninstall' ||
+              values.actionType === 'Backup' ||
+              values.actionType === 'Status' ||
+              values.actionType === 'Version' ||
+              values.actionType === 'Single'
                 ? 'block'
                 : 'none',
           }}

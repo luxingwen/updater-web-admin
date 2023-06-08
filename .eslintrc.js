@@ -6,5 +6,6 @@ module.exports = {
   },
   rules: {
     eqeqeq: 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
   },
 };

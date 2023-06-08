@@ -5,7 +5,7 @@ export async function getAllTasks(
     // query
   },
   body?: API.Task, // add body parameter
-  options?: { [key: string]: any }
+  options?: { [key: string]: any },
 ) {
   return request<API.Task[]>('/api/v1/task/list', {
     method: 'POST',
@@ -13,6 +13,16 @@ export async function getAllTasks(
       ...params,
     },
     data: body, // use body
+    ...(options || {}),
+  });
+}
+
+export async function getTaskInfo(taskId: string, options?: { [key: string]: any }) {
+  return request<API.Task>(`/api/v1/task/detail`, {
+    method: 'POST',
+    data: {
+      taskId: taskId,
+    },
     ...(options || {}),
   });
 }
@@ -50,27 +60,29 @@ export async function getAllTaskExecutionRecords(
   params: {
     // query
   },
-  body?: API.TaskExecutionRecord, // add body parameter
-  options?: { [key: string]: any }
+  options?: { [key: string]: any },
 ) {
-  return request<API.TaskExecutionRecord[]>('/api/v1/task-execution-record/list', {
+  return request<API.TaskExecutionRecord[]>('/api/v1/task/record/list', {
     method: 'POST',
-    params: {
-      ...params,
-    },
-    data: body, // use body
+    data: params, // use body
     ...(options || {}),
   });
 }
 
-export async function deleteTaskExecutionRecord(recordId: string, options?: { [key: string]: any }) {
+export async function deleteTaskExecutionRecord(
+  recordId: string,
+  options?: { [key: string]: any },
+) {
   return request<Record<string, any>>(`/api/v1/task-execution-record/delete/${recordId}`, {
     method: 'POST',
     ...(options || {}),
   });
 }
 
-export async function createTaskExecutionRecord(body: API.TaskExecutionRecord, options?: { [key: string]: any }) {
+export async function createTaskExecutionRecord(
+  body: API.TaskExecutionRecord,
+  options?: { [key: string]: any },
+) {
   return request<API.TaskExecutionRecord>('/api/v1/task-execution-record/create', {
     method: 'POST',
     headers: {
@@ -81,7 +93,10 @@ export async function createTaskExecutionRecord(body: API.TaskExecutionRecord, o
   });
 }
 
-export async function updateTaskExecutionRecord(body: API.TaskExecutionRecord, options?: { [key: string]: any }) {
+export async function updateTaskExecutionRecord(
+  body: API.TaskExecutionRecord,
+  options?: { [key: string]: any },
+) {
   return request<API.TaskExecutionRecord>('/api/v1/task-execution-record/update', {
     method: 'POST',
     headers: {
@@ -92,9 +107,10 @@ export async function updateTaskExecutionRecord(body: API.TaskExecutionRecord, o
   });
 }
 
-
-
-export async function createProgramActionTask(body: API.ReqTaskProgramAction, options?: { [key: string]: any }) {
+export async function createProgramActionTask(
+  body: API.ReqTaskProgramAction,
+  options?: { [key: string]: any },
+) {
   return request<API.Task>('/api/v1/program/action/execute', {
     method: 'POST',
     headers: {

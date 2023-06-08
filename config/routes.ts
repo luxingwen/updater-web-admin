@@ -76,6 +76,12 @@ export default [
     component: './Task',
   },
   {
+    path: '/task/detail/:taskId',
+    name: 'taskDetail',
+    component: './Task/TaskDetail',
+    hideInMenu: true,
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },

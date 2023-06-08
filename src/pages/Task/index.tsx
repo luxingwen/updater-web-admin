@@ -1,21 +1,23 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Button, Modal, Form, Input, Card } from 'antd';
-import ProTable from '@ant-design/pro-table';
 import { getAllTasks, updateTask } from '@/services/updater-server/task'; // Import your API methods
+import ProTable from '@ant-design/pro-table';
+import { Button, Card, Form, Input, Modal } from 'antd';
+import { useRef, useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 
 const TaskManagementPage = () => {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [form] = Form.useForm();
   const actionRef = useRef();
+  const navigate = useNavigate();
 
   const getTasks = async (params, sort, filter) => {
     setLoading(true);
     try {
-      console.log("params:", params);
+      console.log('params:', params);
       const response = await getAllTasks({}, params);
-       return response.data;
-      
+      return response.data;
     } catch (error) {
       console.error('Error fetching tasks:', error);
     } finally {
@@ -85,7 +87,13 @@ const TaskManagementPage = () => {
       title: 'Actions',
       valueType: 'option',
       render: (_, record) => [
-        <Button type="primary" onClick={() => showModal(record)} key="edit">
+        <Button
+          type="primary"
+          onClick={() => {
+            navigate(`/task/detail/${record.taskId}`);
+          }}
+          key="detail"
+        >
           详情
         </Button>,
       ],
@@ -120,7 +128,7 @@ const TaskManagementPage = () => {
         pagination={{
           showQuickJumper: true, // 是否可以快速跳转到某一页
           showSizeChanger: true, // 是否显示改变每页显示数量的下拉框
-          pageSizeOptions: ['10', '20', '30', '50'], // 指定每页可以显示多少条   
+          pageSizeOptions: ['10', '20', '30', '50'], // 指定每页可以显示多少条
         }}
         dateFormatter="string"
         style={{ whiteSpace: 'nowrap' }}
@@ -140,19 +148,9 @@ const TaskManagementPage = () => {
         }}
       />
 
-      <Modal
-        title="Update Task"
-        visible={visible}
-        onCancel={handleCancel}
-        footer={null}
-      >
+      <Modal title="Update Task" visible={visible} onCancel={handleCancel} footer={null}>
         <Form form={form} onFinish={handleUpdate} initialValues={form.getFieldsValue()}>
-          <Form.Item
-            name="taskId"
-            label="Task ID"
-            labelCol={{ span: 6 }}
-            wrapperCol={{ span: 18 }}
-          >
+          <Form.Item name="taskId" label="Task ID" labelCol={{ span: 6 }} wrapperCol={{ span: 18 }}>
             <Input disabled />
           </Form.Item>
           <Form.Item
@@ -203,12 +201,7 @@ const TaskManagementPage = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item
-            name="teamId"
-            label="Team ID"
-            labelCol={{ span: 6 }}
-            wrapperCol={{ span: 18 }}
-          >
+          <Form.Item name="teamId" label="Team ID" labelCol={{ span: 6 }} wrapperCol={{ span: 18 }}>
             <Input />
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 6, span: 18 }}>

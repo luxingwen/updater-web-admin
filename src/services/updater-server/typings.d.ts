@@ -89,6 +89,7 @@ declare namespace API {
     teamId: string;
     created: string;
     updated: string;
+    category: string;
   };
 
   type TaskExecutionRecord = {
@@ -108,6 +109,7 @@ declare namespace API {
     timeout: string;
     parentRecordId: string;
     nextRecordId: string;
+    category: string;
   };
 
   interface ProgramActionTask {

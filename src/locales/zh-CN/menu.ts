@@ -49,4 +49,12 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+  'menu.task': '任务管理',
+  'menu.program': '程序管理',
+  'menu.client': '客户端管理',
+  'menu.taskDetail': '任务详情',
+  'menu.createActionTask': '创建任务',
+  'menu.addAction': '添加动作',
+  'menu.versoinEdit': '编辑版本',
+  'menu.programDetails': '程序详情',
 };
