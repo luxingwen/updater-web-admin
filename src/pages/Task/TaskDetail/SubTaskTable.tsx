@@ -45,6 +45,9 @@ const SubTaskTable: React.FC<SubTaskTableProps> = ({
 
   const handlerViewRecordDetail = (record) => {
     let ids = [];
+
+    console.log('record.content:', record.content);
+
     let taskContent = JSON.parse(record.content);
     taskContent.content.forEach((item) => {
       ids.push(item.taskRecordId);

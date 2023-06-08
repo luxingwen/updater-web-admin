@@ -90,6 +90,7 @@ declare namespace API {
     created: string;
     updated: string;
     category: string;
+    ext: string;
   };
 
   type TaskExecutionRecord = {

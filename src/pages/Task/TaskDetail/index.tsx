@@ -2,6 +2,7 @@ import { getTaskInfo } from '@/services/updater-server/task';
 import { Card } from 'antd';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './index.less';
 import NestedNav from './NestedNav';
 import SubTaskTable from './SubTaskTable';
 import TaskExecutionRecordTable from './TaskRecordTable';
@@ -129,19 +130,38 @@ const TaskDetailPage = () => {
   };
 
   return (
-    <Card>
-      <h1>Task Details</h1>
-      <p>Task ID: {task.taskId}</p>
-      <p>Task Name: {task.taskName}</p>
-      <p>Task Type: {task.taskType}</p>
-      <p>Task Status: {task.taskStatus}</p>
-      <p>Description: {task.description}</p>
-      <p>Creator: {task.creater}</p>
-      <p>Team ID: {task.teamId}</p>
-      <p>Created At: {task.created}</p>
-      <p>Updated At: {task.updated}</p>
-      <p>Content: {task.content}</p>
-      <h2>Other Tasks</h2>
+    <Card className="task-detail-card">
+      {' '}
+      {/* 使用自定义的 CSS 类名 */}
+      <h1 className="task-detail-title">任务详细信息</h1>
+      <p>
+        <strong>Task ID:</strong> {task.taskId}
+      </p>
+      <p>
+        <strong>任务名称:</strong> {task.taskName}
+      </p>
+      <p>
+        <strong>任务类型:</strong> {task.taskType}
+      </p>
+      <p>
+        <strong>任务状态:</strong> {task.taskStatus}
+      </p>
+      <p>
+        <strong>描述:</strong> {task.description}
+      </p>
+      <p>
+        <strong>创建人:</strong> {task.creater}
+      </p>
+      <p>
+        <strong>创建时间:</strong> {task.created}
+      </p>
+      <p>
+        <strong>更新时间:</strong> {task.updated}
+      </p>
+      <p>
+        <strong>Content:</strong> {task.ext}
+      </p>
+      <h2 className="task-detail-subtitle">任务详情</h2>
       <NestedNav navItems={navItems} onNavItemClick={handleNavItemClick} />
       {viewContent()}
     </Card>
